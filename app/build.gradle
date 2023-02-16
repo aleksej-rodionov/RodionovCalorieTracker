@@ -49,6 +49,12 @@ android {
 }
 
 dependencies {
+    implementation project(":core")
+    implementation project(":onboarding:onboarding_presentation")
+    implementation project(":onboarding:onboarding_domain")
+    implementation project(":tracker:tracker_data")
+    implementation project(":tracker:tracker_domain")
+    implementation project(":tracker:tracker_presentation")
 
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
     implementation 'androidx.activity:activity-compose:1.3.1'
@@ -78,13 +84,6 @@ dependencies {
     def daggerHiltVersion = "2.40"
     implementation "com.google.dagger:hilt-android:$daggerHiltVersion"
     implementation "com.google.dagger:hilt-android-compiler:$daggerHiltVersion"
-
-    implementation project(":core")
-    implementation project(":onboarding:onboarding_presentation")
-    implementation project(":onboarding:onboarding_domain")
-    implementation project(":tracker:tracker_data")
-    implementation project(":tracker:tracker_domain")
-    implementation project(":tracker:tracker_presentation")
 
     def coreKtxVersion = "1.7.0"
     implementation "androidx.core:core-ktx:$coreKtxVersion"
