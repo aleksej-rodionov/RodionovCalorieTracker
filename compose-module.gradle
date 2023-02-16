@@ -19,7 +19,8 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion Compose.composeCompilerVersion
+        kotlinCompilerExtensionVersion compose_version
+//        kotlinCompilerVersion '1.6.21'
     }
     buildTypes {
         release {
@@ -40,7 +41,7 @@ android {
 
 dependencies {
     //    def composeVersion = '1.2.0-rc01'
-    def composeCompilerVersion = "1.1.0-rc02"
+    def composeCompilerVersion = "1.2.0-rc02"
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
@@ -57,7 +58,7 @@ dependencies {
     def lifecycleVersion = "2.4.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion"
 
-    def daggerHiltVersion = "2.40"
+    def daggerHiltVersion = "2.38.1"
     implementation "com.google.dagger:hilt-android:$daggerHiltVersion"
     implementation "com.google.dagger:hilt-android-compiler:$daggerHiltVersion"
 

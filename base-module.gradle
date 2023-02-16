@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-    def daggerHiltVersion = "2.40"
+    def daggerHiltVersion = "2.38.1"
     implementation "com.google.dagger:hilt-android:$daggerHiltVersion"
     implementation "com.google.dagger:hilt-android-compiler:$daggerHiltVersion"
 
