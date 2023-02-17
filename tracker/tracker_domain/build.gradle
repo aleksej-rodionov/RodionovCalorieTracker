@@ -1,0 +1,6 @@
+apply from: rootProject.file("base-module.gradle")
+
+dependencies {
+    implementation project(Modules.core)
+    implementation Coroutines.coroutines
+}
