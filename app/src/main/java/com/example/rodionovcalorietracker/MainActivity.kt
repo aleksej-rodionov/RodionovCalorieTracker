@@ -67,9 +67,7 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable(Route.NUTRIENT_GOAL) {
-                            ActivityScreen(
-                                onNavigate = navController::navigate
-                            )
+
                         }
                         composable(Route.ACTIVITY) {
                             GoalScreen(
@@ -77,7 +75,9 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable(Route.GOAL) {
-
+                            ActivityScreen(
+                                onNavigate = navController::navigate
+                            )
                         }
 
                         composable(Route.TRACKER_OVERVIEW) {
