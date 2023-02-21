@@ -27,7 +27,7 @@ fun NutrientInfo(
     amountColor: Color = MaterialTheme.colors.onBackground,
     unitTextSize: TextUnit = 14.sp,
     unitColor: Color = MaterialTheme.colors.onBackground,
-    nameTextStyle: TextStyle = MaterialTheme.typography.body1
+    nameTextStyle: TextStyle = MaterialTheme.typography.body2
 ) {
 
     Column(

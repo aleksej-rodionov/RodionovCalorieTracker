@@ -56,7 +56,7 @@ fun NutrientGoalScreen(
 
             Text(
                 text = stringResource(id = R.string.what_are_your_nutrient_goals),
-                style = MaterialTheme.typography.h4
+                style = MaterialTheme.typography.h5
             )
             Spacer(modifier = Modifier.height(spacing.spaceMedium))
             UnitTextField(

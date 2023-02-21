@@ -52,7 +52,7 @@ fun GoalScreen(
             
             Text(
                 text = stringResource(id = R.string.your_goal),
-                style = MaterialTheme.typography.h4
+                style = MaterialTheme.typography.h5
             )
             Spacer(modifier = Modifier.height(spacing.spaceMedium))
 
