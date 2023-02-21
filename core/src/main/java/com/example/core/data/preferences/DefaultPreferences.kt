@@ -14,6 +14,7 @@ import com.example.core.domain.preferences.Preferences.Companion.KEY_GENDER
 import com.example.core.domain.preferences.Preferences.Companion.KEY_GOAL_TYPE
 import com.example.core.domain.preferences.Preferences.Companion.KEY_HEIGHT
 import com.example.core.domain.preferences.Preferences.Companion.KEY_PROTEIN_RATIO
+import com.example.core.domain.preferences.Preferences.Companion.KEY_SHOULD_SHOW_ONBOARDING
 import com.example.core.domain.preferences.Preferences.Companion.KEY_WEIGHT
 
 class DefaultPreferences(
@@ -78,5 +79,14 @@ class DefaultPreferences(
             proteinRatio = proteinRatio,
             fatRatio = fatRatio
         )
+    }
+
+
+    override fun saveShouldShowOnboarding(should: Boolean) {
+        sharedPref.edit().putBoolean(KEY_SHOULD_SHOW_ONBOARDING, should).apply()
+    }
+
+    override fun fetchShouldShowOnboarding(): Boolean {
+        return sharedPref.getBoolean(KEY_SHOULD_SHOW_ONBOARDING, true)
     }
 }
