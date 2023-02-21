@@ -2,8 +2,11 @@ package com.example.tracker_data.di
 
 import android.app.Application
 import androidx.room.Room
+import com.example.tracker_data.local.TrackerDao
 import com.example.tracker_data.local.TrackerDatabase
 import com.example.tracker_data.remote.OpenFoodApi
+import com.example.tracker_data.repo.TrackerRepoImpl
+import com.example.tracker_domain.repo.TrackerRepo
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -46,5 +49,11 @@ object TrackerDataModule {
     @Singleton
     fun provideTrackerDatabase(app: Application) : TrackerDatabase {
         return Room.databaseBuilder(app, TrackerDatabase::class.java, "tracker_db").build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideTrackerRepo(db: TrackerDatabase, api: OpenFoodApi): TrackerRepo {
+        return TrackerRepoImpl(db.trackerDao, api)
     }
 }
