@@ -22,7 +22,7 @@ import com.example.core.R
 @Composable
 fun AddButton(
     text: String,
-    onCLick: () -> Unit,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
     color: Color = MaterialTheme.colors.primary
 ) {
@@ -32,7 +32,7 @@ fun AddButton(
     Row(
         modifier = modifier
             .clip(RoundedCornerShape(100f))
-            .clickable { onCLick() }
+            .clickable { onClick() }
             .border(
                 width = 1.dp,
                 color = color,
