@@ -110,6 +110,7 @@ class SearchViewModel @Inject constructor(
     }
 }
 
+
 data class SearchState(
     val query: String = "",
     val isHintVisible: Boolean = false,
@@ -118,6 +119,7 @@ data class SearchState(
 )
 
 sealed class SearchEvent {
+
     data class OnQueryChange(val query: String) : SearchEvent()
     object OnSearch : SearchEvent()
     data class OnToggleTrackableFood(val food: TrackableFood) : SearchEvent()
