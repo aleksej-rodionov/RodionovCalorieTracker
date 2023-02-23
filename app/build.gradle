@@ -15,7 +15,8 @@ android {
         versionCode ProjectConfig.versionCode
         versionName ProjectConfig.versionName
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner" //todo change
+//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner" //todo change
+        testInstrumentationRunner "com.example.rodionovcalorietracker.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary true
         }
