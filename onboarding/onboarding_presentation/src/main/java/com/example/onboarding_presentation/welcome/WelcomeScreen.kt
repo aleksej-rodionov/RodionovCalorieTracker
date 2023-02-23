@@ -8,14 +8,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import com.example.core.navigation.Route
-import com.example.core.util.UiEffect
 import com.example.core_ui.LocalSpacing
 import com.example.onboarding_presentation.components.ActionButton
 
 @Composable
 fun WelcomeScreen(
-    onNavigate: (UiEffect.Navigate) -> Unit
+    onNextClick: () -> Unit
 ) {
 
     val spacing = LocalSpacing.current
@@ -36,7 +34,7 @@ fun WelcomeScreen(
         Spacer(modifier = Modifier.height(spacing.spaceMedium))
         ActionButton(
             text = stringResource(id = com.example.core.R.string.next),
-            onClick = { onNavigate(UiEffect.Navigate(Route.GENDER)) },
+            onClick = { onNextClick() },
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
     }

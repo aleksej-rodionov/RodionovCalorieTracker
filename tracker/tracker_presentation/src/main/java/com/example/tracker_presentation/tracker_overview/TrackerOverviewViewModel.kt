@@ -6,7 +6,6 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.core.domain.preferences.Preferences
-import com.example.core.navigation.Route
 import com.example.core.util.UiEffect
 import com.example.tracker_domain.model.TrackedFood
 import com.example.tracker_domain.use_case.TrackerUseCases
@@ -41,19 +40,6 @@ class TrackerOverviewViewModel @Inject constructor(
 
     fun onEvent(event: TrackerOverviewEvent) {
         when (event) {
-            is TrackerOverviewEvent.OnAddFoodClick -> {
-                viewModelScope.launch {
-                    _uiEffect.send(
-                        UiEffect.Navigate(
-                            route = Route.SEARCH
-                                    + "/${event.meal.mealType.name}"
-                                    + "/${state.date.dayOfMonth}"
-                                    + "/${state.date.monthValue}"
-                                    + "/${state.date.year}"
-                        )
-                    )
-                }
-            }
             is TrackerOverviewEvent.OnDeleteTrackedFoodClick -> {
                 viewModelScope.launch {
                     trackerUseCases.deleteTrackedFood(event.trackedFood)
@@ -138,5 +124,4 @@ sealed class TrackerOverviewEvent {
     object OnPreviousDayClick : TrackerOverviewEvent()
     data class OnToggleMealClick(val meal: Meal) : TrackerOverviewEvent()
     data class OnDeleteTrackedFoodClick(val trackedFood: TrackedFood) : TrackerOverviewEvent()
-    data class OnAddFoodClick(val meal: Meal) : TrackerOverviewEvent()
 }

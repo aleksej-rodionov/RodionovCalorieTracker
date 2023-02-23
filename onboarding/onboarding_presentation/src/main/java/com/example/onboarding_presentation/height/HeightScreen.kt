@@ -21,7 +21,7 @@ import kotlinx.coroutines.flow.collect
 @Composable
 fun HeightScreen(
     scaffoldState: ScaffoldState,
-    onNavigate: (UiEffect.Navigate) -> Unit,
+    onNextClick: () -> Unit,
     viewModel: HeightViewModel = hiltViewModel()
 ) {
 
@@ -31,7 +31,7 @@ fun HeightScreen(
     LaunchedEffect(key1 = true) {
         viewModel.uiEffect.collect { effect ->
             when (effect) {
-                is UiEffect.Navigate -> onNavigate(effect)
+                is UiEffect.NavigateSuccess -> onNextClick()
                 is UiEffect.ShowSnackbar -> {
                     scaffoldState.snackbarHostState.showSnackbar(
                         message = effect.msg.asString(context)

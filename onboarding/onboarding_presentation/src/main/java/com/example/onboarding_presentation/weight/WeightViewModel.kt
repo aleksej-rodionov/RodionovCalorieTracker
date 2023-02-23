@@ -6,13 +6,11 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.core.domain.preferences.Preferences
-import com.example.core.domain.use_case.FilterOutDigits
 import com.example.core.util.UiEffect
 import com.example.core.util.UiText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import com.example.core.R
-import com.example.core.navigation.Route
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -45,7 +43,7 @@ class WeightViewModel @Inject constructor(
                 return@launch
             }
             preferences.saveWeight(weightNumber)
-            _uiEffect.send(UiEffect.Navigate(Route.ACTIVITY))
+            _uiEffect.send(UiEffect.NavigateSuccess)
         }
     }
 }

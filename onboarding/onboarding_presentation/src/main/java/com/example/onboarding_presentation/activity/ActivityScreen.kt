@@ -13,7 +13,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.core.R
 import com.example.core.domain.model.ActivityLevel
-import com.example.core.domain.model.Gender
 import com.example.core.util.UiEffect
 import com.example.core_ui.LocalSpacing
 import com.example.onboarding_presentation.components.ActionButton
@@ -22,7 +21,7 @@ import kotlinx.coroutines.flow.collect
 
 @Composable
 fun ActivityScreen(
-    onNavigate: (UiEffect.Navigate) -> Unit,
+    onNextClick: () -> Unit,
     viewModel: ActivityViewModel = hiltViewModel()
 ) {
 
@@ -31,7 +30,7 @@ fun ActivityScreen(
     LaunchedEffect(key1 = true) {
         viewModel.uiEffect.collect { effect ->
             when (effect) {
-                is UiEffect.Navigate -> onNavigate(effect)
+                is UiEffect.NavigateSuccess -> onNextClick()
                 else -> Unit
             }
         }

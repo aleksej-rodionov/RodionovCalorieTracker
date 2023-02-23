@@ -12,7 +12,6 @@ import com.example.core.util.UiText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import com.example.core.R
-import com.example.core.navigation.Route
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -46,7 +45,7 @@ class AgeViewModel @Inject constructor(
                 return@launch
             }
             preferences.saveAge(ageNumber)
-            _uiEffect.send(UiEffect.Navigate(Route.HEIGHT))
+            _uiEffect.send(UiEffect.NavigateSuccess)
         }
     }
 }
