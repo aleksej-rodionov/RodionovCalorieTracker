@@ -12,7 +12,6 @@ import com.example.core.util.UiText
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import com.example.core.R
-import com.example.rodionovcalorietracker.navigation.Route
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -46,7 +45,7 @@ class HeightViewModel @Inject constructor(
                 return@launch
             }
             preferences.saveHeight(heightNumber)
-            _uiEffect.send(UiEffect.NavigateSuccess(com.example.rodionovcalorietracker.navigation.Route.WEIGHT))
+            _uiEffect.send(UiEffect.NavigateSuccess)
         }
     }
 }
