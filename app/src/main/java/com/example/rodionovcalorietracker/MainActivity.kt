@@ -14,14 +14,6 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.core.domain.preferences.Preferences
 import com.example.rodionovcalorietracker.navigation.Route
-import com.example.onboarding_presentation.activity.ActivityScreen
-import com.example.onboarding_presentation.age.AgeScreen
-import com.example.onboarding_presentation.gender.GenderScreen
-import com.example.onboarding_presentation.goal.GoalScreen
-import com.example.onboarding_presentation.height.HeightScreen
-import com.example.onboarding_presentation.nutrient_goal.NutrientGoalScreen
-import com.example.onboarding_presentation.weight.WeightScreen
-import com.example.onboarding_presentation.welcome.WelcomeScreen
 import com.example.rodionovcalorietracker.ui.theme.RodionovCalorieTrackerTheme
 import com.example.tracker_presentation.search.SearchScreen
 import com.example.tracker_presentation.tracker_overview.TrackerOverviewScreen
@@ -37,7 +29,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val shouldShowOnboarding = prefs.fetchShouldShowOnboarding()
+//        val shouldShowOnboarding = prefs.fetchShouldShowOnboarding()
 
         setContent {
             RodionovCalorieTrackerTheme {
@@ -52,12 +44,10 @@ class MainActivity : ComponentActivity() {
 
                     NavHost(
                         navController = navController,
-                        startDestination = if (shouldShowOnboarding) {
-                            Route.WELCOME
-                        } else Route.TRACKER_OVERVIEW
+                        startDestination = Route.TRACKER_OVERVIEW
                     ) {
 
-                        composable(Route.WELCOME) {
+                        /*composable(Route.WELCOME) {
                             WelcomeScreen(
                                 onNextClick = { navController.navigate(Route.GENDER) }
                             )
@@ -98,7 +88,7 @@ class MainActivity : ComponentActivity() {
                             ActivityScreen(
                                 onNextClick = { navController.navigate(Route.NUTRIENT_GOAL) }
                             )
-                        }
+                        }*/
 
                         composable(Route.TRACKER_OVERVIEW) {
                             TrackerOverviewScreen(

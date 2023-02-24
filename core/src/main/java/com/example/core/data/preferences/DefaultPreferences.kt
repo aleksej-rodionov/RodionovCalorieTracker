@@ -1,6 +1,7 @@
 package com.example.core.data.preferences
 
 import android.content.SharedPreferences
+import android.util.Log
 import com.example.core.domain.model.ActivityLevel
 import com.example.core.domain.model.Gender
 import com.example.core.domain.model.GoalType
@@ -58,15 +59,15 @@ class DefaultPreferences(
     }
 
     override fun loadUserInfo(): UserInfo {
-        val age = sharedPref.getInt(KEY_AGE, -1)
-        val height = sharedPref.getInt(KEY_HEIGHT, -1)
-        val weight = sharedPref.getFloat(KEY_WEIGHT, -1f)
-        val genderString = sharedPref.getString(KEY_GENDER, null)
-        val activityLevelString = sharedPref.getString(KEY_ACTIVITY_LEVEL, null)
-        val goalType = sharedPref.getString(KEY_GOAL_TYPE, null)
-        val carbRatio = sharedPref.getFloat(KEY_CARB_RATIO, -1f)
-        val proteinRatio = sharedPref.getFloat(KEY_PROTEIN_RATIO, -1f)
-        val fatRatio = sharedPref.getFloat(KEY_FAT_RATIO, -1f)
+        val age = sharedPref.getInt(KEY_AGE, 32)
+        val height = sharedPref.getInt(KEY_HEIGHT, 177)
+        val weight = sharedPref.getFloat(KEY_WEIGHT, 65f)
+        val genderString = sharedPref.getString(KEY_GENDER, "male")
+        val activityLevelString = sharedPref.getString(KEY_ACTIVITY_LEVEL, "medium")
+        val goalType = sharedPref.getString(KEY_GOAL_TYPE, "keep_weight")
+        val carbRatio = sharedPref.getFloat(KEY_CARB_RATIO, 0.4f)
+        val proteinRatio = sharedPref.getFloat(KEY_PROTEIN_RATIO, 0.3f)
+        val fatRatio = sharedPref.getFloat(KEY_FAT_RATIO, 0.3f)
 
         return UserInfo(
             gender = Gender.fromString(genderString ?: "male"),
