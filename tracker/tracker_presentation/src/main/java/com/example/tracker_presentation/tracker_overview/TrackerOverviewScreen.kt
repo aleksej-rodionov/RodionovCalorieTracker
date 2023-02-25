@@ -1,24 +1,29 @@
 package com.example.tracker_presentation.tracker_overview
 
+import android.app.Activity
+import androidx.activity.ComponentActivity
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.core.util.UiEffect
-import com.example.core_ui.LocalSpacing
 import com.example.core.R
+import com.example.core.util.ViewModelFactory
+import com.example.core_ui.LocalSpacing
 import com.example.tracker_presentation.tracker_overview.components.*
 
 @Composable
 fun TrackerOverviewScreen(
     onNavigateToSearch: (String, Int, Int, Int) -> Unit,
-    viewModel: TrackerOverviewViewModel = hiltViewModel()
+    factory: ViewModelFactory,
+    owner: ComponentActivity
+//    viewModel: TrackerOverviewViewModel
 ) {
+
+    val viewModel by owner.viewModels<TrackerOverviewViewModel> { factory }
 
     val spacing = LocalSpacing.current
     val state = viewModel.state

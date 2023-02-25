@@ -49,8 +49,13 @@ dependencies {
     implementation Compose.viewModelCompose
     implementation Compose.activityCompose
 
-    kapt DaggerHilt.hiltCompiler
-    implementation DaggerHilt.hiltAndroid
+//    kapt DaggerHilt.hiltCompiler
+//    implementation DaggerHilt.hiltAndroid
+
+    implementation Dagger2.daggerAndroid
+    implementation Dagger2.daggerAndroidSupport
+    kapt Dagger2.daggerAndroidProcessor
+    kapt Dagger2.daggerCompiler
 
     testImplementation Testing.junit4 
     testImplementation Testing.junitAndroidExt 
@@ -69,5 +74,5 @@ dependencies {
     androidTestImplementation Testing.composeUiTest
     androidTestImplementation Testing.mockk
     androidTestImplementation Testing.mockWebServer 
-    androidTestImplementation Testing.hiltTesting 
+//    androidTestImplementation Testing.hiltTesting
 }

@@ -5,21 +5,19 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.core.R
 import com.example.core.domain.use_case.FilterOutDigits
 import com.example.core.util.UiEffect
 import com.example.core.util.UiText
 import com.example.tracker_domain.model.MealType
 import com.example.tracker_domain.model.TrackableFood
 import com.example.tracker_domain.use_case.TrackerUseCases
-import com.example.core.R
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import javax.inject.Inject
 
-@HiltViewModel
 class SearchViewModel @Inject constructor(
     private val trackerUseCases: TrackerUseCases,
     private val filterOutDigits: FilterOutDigits

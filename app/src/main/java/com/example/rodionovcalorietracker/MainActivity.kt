@@ -3,6 +3,7 @@ package com.example.rodionovcalorietracker
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
@@ -13,10 +14,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.core.domain.preferences.Preferences
+import com.example.core.util.ViewModelFactory
 import com.example.rodionovcalorietracker.navigation.Route
 import com.example.rodionovcalorietracker.ui.theme.RodionovCalorieTrackerTheme
 import com.example.tracker_presentation.search.SearchScreen
+import com.example.tracker_presentation.search.SearchViewModel
 import com.example.tracker_presentation.tracker_overview.TrackerOverviewScreen
+import com.example.tracker_presentation.tracker_overview.TrackerOverviewViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -26,7 +30,11 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var prefs: Preferences
 
+    @Inject
+    lateinit var factory: ViewModelFactory
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        RodionovCalorieTrackerApp.appComponent?.inject(this)
         super.onCreate(savedInstanceState)
 
 //        val shouldShowOnboarding = prefs.fetchShouldShowOnboarding()
@@ -99,7 +107,10 @@ class MainActivity : ComponentActivity() {
                                                 "/$month" +
                                                 "/$year"
                                     )
-                                }
+                                },
+                                factory = factory,
+                                owner = this@MainActivity
+//                                viewModel = viewModel by viewModels<TrackerOverviewViewModel> { factory }
                             )
                         }
                         composable(
@@ -119,6 +130,8 @@ class MainActivity : ComponentActivity() {
                                 },
                             )
                         ) {
+//                            val viewModel by viewModels<SearchViewModel> { factory }
+
                             val mealName = it.arguments?.getString("mealName")!!
                             val dayOfMonth = it.arguments?.getInt("dayOfMonth")!!
                             val month = it.arguments?.getInt("month")!!
@@ -131,7 +144,9 @@ class MainActivity : ComponentActivity() {
                                 year = year,
                                 onNavigateUp = {
                                     navController.navigateUp()
-                                }
+                                },
+                                factory = factory,
+                                owner = this@MainActivity
                             )
                         }
                     }

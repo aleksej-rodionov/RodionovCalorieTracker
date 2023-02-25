@@ -9,7 +9,6 @@ import com.example.core.domain.preferences.Preferences
 import com.example.core.util.UiEffect
 import com.example.tracker_domain.model.TrackedFood
 import com.example.tracker_domain.use_case.TrackerUseCases
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.launchIn
@@ -19,7 +18,6 @@ import kotlinx.coroutines.launch
 import java.time.LocalDate
 import javax.inject.Inject
 
-@HiltViewModel
 class TrackerOverviewViewModel @Inject constructor(
     preferences: Preferences,
     private val trackerUseCases: TrackerUseCases

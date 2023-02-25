@@ -1,5 +1,8 @@
 package com.example.tracker_presentation.search
 
+import android.app.Activity
+import androidx.activity.ComponentActivity
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -17,12 +20,15 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.core.util.UiEffect
 import com.example.core_ui.LocalSpacing
 import com.example.core.R
+import com.example.core.util.ViewModelFactory
 import com.example.tracker_domain.model.MealType
 import com.example.tracker_presentation.search.components.SearchTextField
 import com.example.tracker_presentation.search.components.TrackableFoodItem
+import com.example.tracker_presentation.tracker_overview.TrackerOverviewViewModel
 import java.time.LocalDate
 
 @OptIn(ExperimentalComposeUiApi::class)
@@ -34,8 +40,12 @@ fun SearchScreen(
     month: Int,
     year: Int,
     onNavigateUp: () -> Unit,
-    viewModel: SearchViewModel = hiltViewModel()
+    factory: ViewModelFactory,
+    owner: ComponentActivity
+//    viewModel: SearchViewModel
 ) {
+
+    val viewModel by owner.viewModels<SearchViewModel> { factory }
 
     val spacing = LocalSpacing.current
     val state = viewModel.state
